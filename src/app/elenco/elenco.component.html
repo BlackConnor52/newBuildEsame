@@ -1,0 +1,55 @@
+<section class="ui-card table-card">
+  <div class="card-header">
+    <div class="card-heading">
+      <p class="card-eyebrow">Panoramica team</p>
+      <h2 class="card-title">Elenco dipendenti</h2>
+      <p class="card-subtitle">
+        Una vista chiara e ordinata di tutti i membri registrati. Utilizza le azioni per modificare o rimuovere
+        rapidamente le informazioni.
+      </p>
+    </div>
+    <button type="button" class="button ghost" routerLink="/registrazione">Nuova registrazione</button>
+  </div>
+
+  <ng-container *ngIf="dipendenti.length; else emptyState">
+    <div class="table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Handle</th>
+            <th>Data di nascita</th>
+            <th>Sesso</th>
+            <th>Stipendio</th>
+            <th class="actions-column">Azioni</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dipendente of dipendenti; let i = index">
+            <td>{{ dipendente.id }}</td>
+            <td>{{ dipendente.name | titlecase }}</td>
+            <td>{{ dipendente.surname | titlecase }}</td>
+            <td>@{{ dipendente.username || ('profilo' + dipendente.id) }}</td>
+            <td>{{ dipendente.date | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ dipendente.sex | titlecase }}</td>
+            <td>{{ dipendente.salary | currency: 'EUR' }}</td>
+            <td class="actions">
+              <button type="button" class="button text" [routerLink]="['/dipendente', dipendente.id]">Dettagli</button>
+              <button type="button" class="button text" [routerLink]="['/modifica', dipendente.id]">Modifica</button>
+              <button type="button" class="button text danger" (click)="delete(i)">Elimina</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <p>Nessun dipendente registrato al momento.</p>
+      <button type="button" class="button ghost" routerLink="/registrazione">Registra il primo dipendente</button>
+    </div>
+  </ng-template>
+</section>

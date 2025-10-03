@@ -1,0 +1,93 @@
+<section class="ui-card form-card">
+  <div class="card-header">
+    <div class="card-heading">
+      <p class="card-eyebrow">Aggiorna profilo</p>
+      <h2 class="card-title">Modifica dipendente</h2>
+      <p class="card-subtitle">
+        Rivedi e aggiorna le informazioni del dipendente selezionato. Le modifiche sono applicate
+        immediatamente all'elenco.
+      </p>
+    </div>
+    <button type="button" class="button ghost" routerLink="/elenco">Torna all'elenco</button>
+  </div>
+
+  <form #insertForm="ngForm" class="form-layout" (ngSubmit)="submit()">
+    <div class="field-group two-columns">
+      <div class="field">
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="name" [(ngModel)]="dipendente.name" placeholder="Nome" />
+      </div>
+      <div class="field">
+        <label for="surname">Cognome</label>
+        <input type="text" id="surname" name="surname" [(ngModel)]="dipendente.surname" placeholder="Cognome" />
+      </div>
+    </div>
+
+    <div class="field-group two-columns">
+      <div class="field">
+        <label for="username">Username</label>
+        <div class="handle-field">
+          <span class="handle-prefix">@</span>
+          <input type="text" id="username" name="username" [(ngModel)]="dipendente.username" placeholder="username" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="role">Ruolo</label>
+        <input type="text" id="role" name="role" [(ngModel)]="dipendente.role" placeholder="Ruolo" />
+      </div>
+    </div>
+
+    <div class="field-group two-columns">
+      <div class="field">
+        <label for="location">Sede</label>
+        <input type="text" id="location" name="location" [(ngModel)]="dipendente.location" placeholder="Sede" />
+      </div>
+      <div class="field">
+        <label for="sex">Sesso</label>
+        <select id="sex" name="sex" [(ngModel)]="dipendente.sex">
+          <option value="" disabled [attr.selected]="!dipendente.sex ? '' : null">Seleziona</option>
+          <option value="femmina">Femmina</option>
+          <option value="maschio">Maschio</option>
+          <option value="altro">Altro</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field-group two-columns">
+      <div class="field">
+        <label for="date">Data di nascita</label>
+        <input type="date" id="date" name="date" [(ngModel)]="dipendente.date" />
+      </div>
+      <div class="field">
+        <label for="phone">Telefono</label>
+        <input type="tel" id="phone" name="phone" [(ngModel)]="dipendente.phone" placeholder="Telefono" />
+      </div>
+    </div>
+
+    <div class="field-group two-columns">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="dipendente.email" placeholder="Email" />
+      </div>
+      <div class="field">
+        <label for="salary">Stipendio annuo</label>
+        <div class="salary-field">
+          <span class="currency">€</span>
+          <input type="number" id="salary" name="salary" [(ngModel)]="dipendente.salary" min="0" step="100"
+            placeholder="Es. 42000" />
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field">
+        <label for="bio">Bio</label>
+        <textarea id="bio" name="bio" [(ngModel)]="dipendente.bio" rows="3" placeholder="Aggiorna la bio"></textarea>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="button">Salva modifiche</button>
+    </div>
+  </form>
+</section>

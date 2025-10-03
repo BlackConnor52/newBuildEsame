@@ -1,0 +1,96 @@
+<section class="profile-page" *ngIf="!notFound; else missingDipendente">
+  <div class="profile-layout" *ngIf="dipendente">
+    <header class="profile-hero ui-card">
+      <div class="avatar" aria-hidden="true">{{ avatarInitials }}</div>
+      <div class="hero-content">
+        <div class="hero-header">
+          <h1 class="username">{{ profileHandle }}</h1>
+          <div class="hero-actions">
+            <button type="button" class="button ghost" (click)="goToEdit()">Modifica profilo</button>
+            <button type="button" class="button text" (click)="goBack()">Torna all'elenco</button>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <span><strong>{{ postCount }}</strong> post</span>
+          <span><strong>{{ dipendente.role || 'Ruolo da definire' }}</strong></span>
+          <span><strong>ID</strong> #{{ dipendente.id }}</span>
+        </div>
+        <div class="hero-meta">
+          <p class="meta-name">{{ dipendente.name | titlecase }} {{ dipendente.surname | titlecase }}</p>
+          <p class="meta-item">{{ dipendente.location || 'Sede non specificata' }}</p>
+          <p class="meta-item">{{ dipendente.email || 'Email non disponibile' }}</p>
+          <p class="meta-item">{{ dipendente.phone || 'Telefono non disponibile' }}</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="bio-section ui-card">
+      <h2>Bio</h2>
+      <p *ngIf="dipendente.bio; else emptyBio">{{ dipendente.bio }}</p>
+      <ng-template #emptyBio>
+        <p class="empty-text">Racconta qualcosa su questo dipendente per completare il profilo.</p>
+      </ng-template>
+    </section>
+
+    <section class="details-section ui-card">
+      <h2>Dettagli personali</h2>
+      <dl class="details-grid">
+        <div class="detail-item">
+          <dt>Data di nascita</dt>
+          <dd>{{ dipendente.date | date: 'dd/MM/yyyy' }}</dd>
+        </div>
+        <div class="detail-item">
+          <dt>Sesso</dt>
+          <dd>{{ dipendente.sex | titlecase }}</dd>
+        </div>
+        <div class="detail-item">
+          <dt>Stipendio</dt>
+          <dd>{{ dipendente.salary | currency: 'EUR' }}</dd>
+        </div>
+        <div class="detail-item">
+          <dt>ID interno</dt>
+          <dd>#{{ dipendente.id }}</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="gallery-section ui-card">
+      <div class="gallery-header">
+        <div>
+          <h2>Post</h2>
+          <p>Carica momenti significativi per raccontare la storia professionale del dipendente.</p>
+        </div>
+        <form class="add-photo" (ngSubmit)="addPhoto()">
+          <div class="input-wrapper">
+            <input type="url" name="photo" placeholder="Incolla l'URL della foto" [(ngModel)]="newPhotoUrl" (input)="photoError = ''" />
+            <button type="submit" class="button">Aggiungi</button>
+          </div>
+          <p class="error" *ngIf="photoError">{{ photoError }}</p>
+        </form>
+      </div>
+
+      <div class="gallery-grid" *ngIf="dipendente.photos?.length; else emptyGallery">
+        <figure class="gallery-card" *ngFor="let photo of dipendente.photos">
+          <img [src]="photo" alt="Foto del profilo di {{ dipendente.name || profileHandle }}" />
+          <figcaption>
+            <button type="button" class="remove" (click)="removePhoto(photo)">Rimuovi</button>
+          </figcaption>
+        </figure>
+      </div>
+
+      <ng-template #emptyGallery>
+        <p class="empty-text">Non ci sono ancora foto. Aggiungine una per iniziare la galleria.</p>
+      </ng-template>
+    </section>
+  </div>
+</section>
+
+<ng-template #missingDipendente>
+  <section class="profile-page">
+    <div class="ui-card empty-card">
+      <h2>Dipendente non trovato</h2>
+      <p>La scheda richiesta non è più disponibile. Torna all'elenco per selezionare un altro dipendente.</p>
+      <button type="button" class="button ghost" (click)="goBack()">Vai all'elenco dipendenti</button>
+    </div>
+  </section>
+</ng-template>

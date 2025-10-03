@@ -1,1 +1,291 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-primary: #ffd60a;
+  --color-primary-strong: #ffcd00;
+  --color-secondary: #ffffff;
+  --color-ink: #0f0f0f;
+  --color-muted: rgba(15, 15, 15, 0.6);
+  --color-border: rgba(15, 15, 15, 0.12);
+  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.12);
+  --radius-lg: 28px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(160deg, #fffbe6 0%, #fff5b1 42%, #ffffff 100%);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 0.45rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.92);
+  font-size: 1rem;
+  transition: border 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(255, 214, 10, 0.25);
+  background: rgba(255, 255, 255, 1);
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--color-primary);
+  color: var(--color-ink);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(255, 214, 10, 0.35);
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 214, 10, 0.4);
+}
+
+.button.ghost {
+  background: rgba(255, 255, 255, 0.45);
+  border-color: rgba(15, 15, 15, 0.08);
+  color: var(--color-ink);
+}
+
+.button.ghost:hover {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+.button.text {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-ink);
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.button.text:hover {
+  background: rgba(0, 0, 0, 0.04);
+  transform: none;
+  box-shadow: none;
+}
+
+.button.danger {
+  color: #c1121f;
+}
+
+.button.danger:hover {
+  color: #a30e1a;
+  background: rgba(193, 18, 31, 0.08);
+}
+
+.ui-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-soft);
+  width: min(960px, 100%);
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.card-heading {
+  max-width: 520px;
+}
+
+.card-eyebrow {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: var(--color-muted);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-size: 2.1rem;
+  margin: 0;
+}
+
+.card-subtitle {
+  margin: 0.75rem 0 0;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.field-group {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.field-group.two-columns {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-feedback {
+  background: rgba(193, 18, 31, 0.08);
+  color: #c1121f;
+  border-radius: 16px;
+  padding: 0.85rem 1.1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 20px;
+  border: 1px solid rgba(15, 15, 15, 0.06);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(15, 15, 15, 0.08);
+}
+
+.data-table thead th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+  font-weight: 700;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(255, 214, 10, 0.08);
+}
+
+.data-table td.actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--color-muted);
+  font-weight: 500;
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+@media (max-width: 960px) {
+  .ui-card {
+    padding: 2.25rem 2rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .form-actions {
+    justify-content: stretch;
+  }
+
+  .form-actions .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    background: linear-gradient(180deg, #fffbe6 0%, #fff5b1 55%, #ffffff 100%);
+  }
+
+  .card-title {
+    font-size: 1.8rem;
+  }
+
+  .data-table {
+    min-width: 100%;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.85rem 1rem;
+  }
+}

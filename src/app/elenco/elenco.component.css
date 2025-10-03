@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.table-card .actions-column {
+  text-align: right;
+}
+
+.table-card .button.text {
+  min-width: 0;
+}
+
+.table-card .button.text:hover {
+  background: rgba(255, 214, 10, 0.15);
+}
+
+.table-card .button.text.danger:hover {
+  background: rgba(193, 18, 31, 0.08);
+}

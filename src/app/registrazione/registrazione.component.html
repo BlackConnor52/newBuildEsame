@@ -1,0 +1,97 @@
+<section class="ui-card form-card">
+  <div class="card-header">
+    <div class="card-heading">
+      <p class="card-eyebrow">Gestione dipendenti</p>
+      <h2 class="card-title">Registra un nuovo dipendente</h2>
+      <p class="card-subtitle">
+        Completa i campi per aggiungere un nuovo talento alla tua organizzazione. I dati sono salvati in
+        locale e immediatamente disponibili nell'elenco.
+      </p>
+    </div>
+    <button type="button" class="button ghost" routerLink="/elenco">Visualizza elenco</button>
+  </div>
+
+  <form #insertForm="ngForm" class="form-layout" (ngSubmit)="insert(dipendente)">
+    <div class="field-group two-columns">
+      <div class="field">
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="name" [(ngModel)]="dipendente.name" placeholder="Es. Chiara" />
+      </div>
+      <div class="field">
+        <label for="surname">Cognome</label>
+        <input type="text" id="surname" name="surname" [(ngModel)]="dipendente.surname" placeholder="Es. Rossi" />
+      </div>
+    </div>
+
+    <div class="field-group two-columns">
+      <div class="field">
+        <label for="username">Username</label>
+        <div class="handle-field">
+          <span class="handle-prefix">@</span>
+          <input type="text" id="username" name="username" [(ngModel)]="dipendente.username" placeholder="es. chiararossi" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="role">Ruolo</label>
+        <input type="text" id="role" name="role" [(ngModel)]="dipendente.role" placeholder="Es. Product Designer" />
+      </div>
+    </div>
+
+    <div class="field-group two-columns">
+      <div class="field">
+        <label for="location">Sede</label>
+        <input type="text" id="location" name="location" [(ngModel)]="dipendente.location" placeholder="Es. Milano, IT" />
+      </div>
+      <div class="field">
+        <label for="sex">Sesso</label>
+        <select id="sex" name="sex" [(ngModel)]="dipendente.sex">
+          <option value="" disabled [attr.selected]="!dipendente.sex ? '' : null">Seleziona</option>
+          <option value="femmina">Femmina</option>
+          <option value="maschio">Maschio</option>
+          <option value="altro">Altro</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field-group two-columns">
+      <div class="field">
+        <label for="date">Data di nascita</label>
+        <input type="date" id="date" name="date" [(ngModel)]="dipendente.date" />
+      </div>
+      <div class="field">
+        <label for="phone">Telefono</label>
+        <input type="tel" id="phone" name="phone" [(ngModel)]="dipendente.phone" placeholder="Es. +39 333 555 7788" />
+      </div>
+    </div>
+
+    <div class="field-group two-columns">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="dipendente.email" placeholder="nome@azienda.com" />
+      </div>
+      <div class="field">
+        <label for="salary">Stipendio annuo</label>
+        <div class="salary-field">
+          <span class="currency">€</span>
+          <input type="number" id="salary" name="salary" [(ngModel)]="dipendente.salary" min="0" step="100"
+            placeholder="Es. 35000" />
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field">
+        <label for="bio">Bio</label>
+        <textarea id="bio" name="bio" [(ngModel)]="dipendente.bio" rows="3" placeholder="Racconta in poche parole la storia del dipendente"></textarea>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="button">Registra dipendente</button>
+    </div>
+
+    <div class="form-feedback" *ngIf="errorMsg">
+      Compila tutti i campi obbligatori per procedere con la registrazione.
+    </div>
+  </form>
+</section>

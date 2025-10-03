@@ -1,0 +1,86 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.salary-field {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 15, 15, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.salary-field input {
+  border: none;
+  padding: 0.5rem 0.25rem;
+  background: transparent;
+  font-size: 1.05rem;
+}
+
+.salary-field input:focus {
+  box-shadow: none;
+}
+
+.salary-field .currency {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--color-ink);
+  padding: 0.35rem 0.75rem;
+  border-radius: 14px;
+  background: rgba(255, 214, 10, 0.25);
+}
+
+.salary-field:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(255, 214, 10, 0.18);
+}
+
+.handle-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 15, 15, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.handle-field input {
+  border: none;
+  background: transparent;
+  flex: 1;
+  padding: 0.5rem 0;
+  font-size: 1.05rem;
+}
+
+.handle-field:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(255, 214, 10, 0.18);
+}
+
+.handle-prefix {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+  border-radius: 24px;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(15, 15, 15, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(255, 214, 10, 0.18);
+  outline: none;
+}
